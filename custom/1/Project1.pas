@@ -5,7 +5,7 @@ var
 begin
   Write('5 integers are entered: ');
   readln(n1, n2, n3, n4, n5);
-  n1 := m;
+  m := n1;
   if n2 > m then
     m := n2;
   if n3 > m then
