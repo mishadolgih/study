@@ -17,8 +17,8 @@ begin
 
   k := 1;
   kMax := 1;
-  for i := 1 to N - 1 do
-    if A[i] = A[i + 1] then
+  for i := 2 to N do
+    if A[i] = A[i - 1] then
     begin
       k := k + 1;
       if k > kMax then
