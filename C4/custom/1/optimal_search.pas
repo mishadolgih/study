@@ -7,6 +7,8 @@ var
   i, N, max, q, x: integer;
 
 begin
+  Assign(input, 'tests/00');
+  reset(input);
   readln(N);
 
   readln(x);

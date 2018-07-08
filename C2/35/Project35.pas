@@ -23,6 +23,7 @@ begin
       k := i;
       max := A[i] + A[i + 1] + A[i + 2];
     end;
+
   for i := k to k + 2 do
     write(A[i], ' ');
   readln();

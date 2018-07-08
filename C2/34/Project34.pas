@@ -1,5 +1,8 @@
 program Project34;
 
+uses
+  Math;
+
 const
   N = 70;
 
@@ -8,23 +11,12 @@ var
   i, j, x, y: integer;
 
 begin
-  randomize();
   for i := 1 to N do
     A[i] := random(1000) - 500;
   for i := 1 to N do
     Write(A[i], ' ');
   writeln();
 
-  x := A[1];
-  y := A[1];
-  for i := 2 to N do
-  begin
-    if A[i] > x then
-      x := A[i];
-    if A[i] < y then
-      y := A[i];
-  end;
-  writeln(x - y);
+  writeln(MaxValue(A) - MinValue(A));
   readln();
 end.
-

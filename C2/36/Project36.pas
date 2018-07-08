@@ -26,8 +26,8 @@ begin
     end
     else
       k := 1;
+
   writeln(kmax);
   readln();
-
 end.
 

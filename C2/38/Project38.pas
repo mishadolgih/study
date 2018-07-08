@@ -26,6 +26,7 @@ begin
     if k > kmax then
       kmax := k;
   end;
+
   writeln(kmax);
   readln();
 end.

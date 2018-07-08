@@ -1,11 +1,14 @@
 program Project39;
 
+uses
+  Math;
+
 const
   N = 30;
 
 var
   A: array[1..N] of integer;
-  i, j, k, imax, kmax: integer;
+  i, j, k, imax, kmax, q: integer;
 
 begin
   randomize();
@@ -18,25 +21,18 @@ begin
   kmax := 0;
   for i := 1 to N do
   begin
-    if A[i] = 1 then
-      k := 1
-    else
-      k := 2;
-    j := 2;
-    while j * j < A[i] do
-    begin
+    q := floor(sqrt(A[i]));
+    k := ifthen(sqr(q) = A[i], -1, 0);
+    for j := 1 to q do
       if A[i] mod j = 0 then
-        k := k + 2;
-      j := j + 1;
-    end;
-    if j * j = A[i] then
-      k := k + 1;
+        k += 2;
     if k > kmax then
     begin
       kmax := k;
       imax := i;
     end;
   end;
+
   writeln(imax);
   readln();
 end.
