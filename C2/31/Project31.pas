@@ -6,6 +6,7 @@ const
 var
   A: array[1..N] of integer;
   i, i1, Sum: integer;
+
 begin
   randomize();
   for i := 1 to N do
@@ -22,9 +23,9 @@ begin
       i1 := i;
       Sum := A[i] + A[i + 1];
     end;
+
   writeln(i1);
   readln();
-
 end.
 
 

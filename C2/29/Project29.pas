@@ -1,7 +1,8 @@
 program Project29;
 
+uses
+  Math;
 
-mats;
 const
   N = 30;
 
@@ -18,8 +19,8 @@ begin
     Write(A[i], ' ');
   writeln();
 
-   max := ifthen(A[1]>A[2], A[1], A[2]);
-   max2 := ifthen(A[1] <A[2], A[1], A[2]);
+  max := ifthen(A[1] > A[2], A[1], A[2]);
+  max2 := ifthen(A[1] < A[2], A[1], A[2]);
 
   for i := 3 to N do
     if A[i] > max then

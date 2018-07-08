@@ -19,6 +19,7 @@ begin
   for i := 1 to N do
     s := s + A[i];
   s := s / N;
+
   k := 1;
   for i := 2 to N do
     if abs(a[i] - s) < abs(a[k] - s) then
