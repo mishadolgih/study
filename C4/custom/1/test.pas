@@ -1,13 +1,14 @@
 program test;
 
 const
-  Lim = 1000;
+  NLim = 20;
+  VLim = 5;
 
 var
-  i, q, max, x, N: integer;
-  A: array[1..Lim] of integer;
+  i, q, max, N, t: integer;
+  A: array[1..NLim] of integer;
 
-  function simple_search(): integer;
+  function simple(): integer;
   begin
     max := A[1];
     for i := 2 to N do
@@ -20,7 +21,7 @@ var
     exit(q);
   end;
 
-  function optimal_search(): integer;
+  function optimal(): integer;
   begin
     max := A[1];
     q := 1;
@@ -37,16 +38,15 @@ var
 
 begin
   randomize();
-  N := random(1000);
+  for t := 1 to 10000 do
+  begin
+    N := Nlim - random(NLim div 2);
+    for i := 1 to N do
+      A[i] := random(VLim) + 1;
 
-  for i := 1 to N do
-    A[i] := random(10000);
-  for i := 1 to N do
-    Writeln(A[i]);
-
-  if simple_search = optimal_search then
-    writeln('working')
-  else
-    writeln('error');
+    if simple() <> optimal() then
+      writeln('error');
+  end;
+  writeln('done');
 end.
 

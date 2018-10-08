@@ -28,7 +28,7 @@
     </RunParams>
     <Units Count="1">
       <Unit0>
-        <Filename Value="tests_gen.lpr"/>
+        <Filename Value="tests_gen.pas"/>
         <IsPartOfProject Value="True"/>
       </Unit0>
     </Units>
