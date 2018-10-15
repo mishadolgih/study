@@ -4,44 +4,44 @@ uses
   SysUtils;
 
 const
-  NLim = 20;
-  VLim = 5;
+  VLim = 40;
+  Nlim = 50;
 
 var
-  ans, t, N: longint;
+  ans, t: longint;
   Data: array[1..Nlim] of longint;
 
   procedure init_data();
   var
     i: longint;
   begin
-    N := Nlim - random(NLim div 2);
-    for i := 1 to N do
-      Data[i] := random(VLim)+1;
+    for i := 1 to 2 do
+      Data[i] := random(VLim);
+    for i := 3 to 4 do
+      data[i]:= random(Nlim) +1;
   end;
 
   procedure print_data();
   var
     i: longint;
   begin
-    for i := 1 to N do
+    for i := 1 to 4 do
       Write(Data[i], ' ');
     writeln();
   end;
 
   procedure save_test(t: integer);
   var
-    infile, afile: text;
+    infile, afile: textFile;
     i: integer;
   begin
-    Assign(infile, 'tests/0' + IntToStr(t));
+    AssignFile(infile, 'tests/0' + IntToStr(t));
     rewrite(infile);
-    writeln(infile, N);
-    for i := 1 to N do
+    for i := 1 to 4 do
       writeln(infile, Data[i]);
     Close(infile);
 
-    Assign(afile, 'tests/0' + IntToStr(t) + '.a');
+    AssignFile(afile, 'tests/0' + IntToStr(t) + '.a');
     rewrite(afile);
     writeln(afile, ans);
     Close(afile);
@@ -49,7 +49,7 @@ var
 
 begin
   randomize();
-  for t := 1 to 5 do
+  for t := 0 to 4 do
   begin
     init_data();
     print_data();

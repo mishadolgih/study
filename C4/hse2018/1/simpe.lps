@@ -4,21 +4,15 @@
     <PathDelim Value="\"/>
     <Version Value="10"/>
     <BuildModes Active="Default"/>
-    <Units Count="2">
+    <Units Count="1">
       <Unit0>
-        <Filename Value="optimal.pas"/>
+        <Filename Value="simpe.pas"/>
         <IsPartOfProject Value="True"/>
-        <CursorPos X="9" Y="11"/>
+        <IsVisibleTab Value="True"/>
+        <CursorPos X="11" Y="18"/>
         <UsageCount Value="20"/>
         <Loaded Value="True"/>
       </Unit0>
-      <Unit1>
-        <Filename Value="..\..\..\..\test_gen.pas"/>
-        <IsVisibleTab Value="True"/>
-        <EditorIndex Value="1"/>
-        <UsageCount Value="10"/>
-        <Loaded Value="True"/>
-      </Unit1>
     </Units>
     <JumpHistory HistoryIndex="-1"/>
   </ProjectSession>

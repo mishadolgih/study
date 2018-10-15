@@ -1,8 +1,8 @@
 program simple;
- const N forward
+ const NLim = 10000;
 var
-  i, j, a, b, max: integer;
-  A:array[1..N] of integer;
+  i, j, max, N: integer;
+  A:array[1..NLim] of integer;
 begin
   max := 0;
   readln(N);
