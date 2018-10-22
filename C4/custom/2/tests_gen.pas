@@ -5,7 +5,7 @@ uses
 
 const
   NLim = 10;
-  VLim = 20;
+  VLim = 100;
 
 var
   ans, t, N: longint;
