@@ -7,7 +7,7 @@ const
 
 
 var
-  i, j, max, max2, max7, max_even, max_even2, R, N, t: integer;
+  i, j, max, max1, max2, max7, max_even, max_even2, R, N, t: integer;
   A: array[1..NLim] of integer;
 
   function simple(): integer;
@@ -17,7 +17,7 @@ var
       for j := 2 to N do
         if (A[i] <> A[j]) and (A[i] * A[j] mod 14 = 0) and (A[i] * A[j] > max) then
           max := A[i] * A[j];
-    exit(max);
+    exit(max1);
   end;
 
   function optimal(): integer;
@@ -66,7 +66,7 @@ begin
       A[i] := random(VLim) + 1;
 
     if simple() <> optimal() then
-      writeln('error');
+      optimal();
   end;
   writeln('done');
   readln();
