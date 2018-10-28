@@ -3,22 +3,17 @@ program tests_gen;
 uses
   SysUtils;
 
-const
-  VLim = 40;
-  Nlim = 50;
 
 var
   ans, t: longint;
-  Data: array[1..Nlim] of longint;
+  Data: array[1..4] of longint;
 
   procedure init_data();
   var
     i: longint;
   begin
-    for i := 1 to 2 do
-      Data[i] := random(VLim);
-    for i := 3 to 4 do
-      data[i]:= random(Nlim) +1;
+    for i := 1 to 4 do
+      data[i]:= random(30) +1;
   end;
 
   procedure print_data();
