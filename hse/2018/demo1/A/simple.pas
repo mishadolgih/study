@@ -1,10 +1,10 @@
-program simpe;
+program simple;
 
 var
   a, b, n, m, s, x, y: integer;
 begin
-  Assign(input, 'tests/01');
-  reset(input);
+  //Assign(input, 'tests/07');
+ // reset(input);
   readln(n);
   readln(m);
   readln(a);
@@ -21,6 +21,9 @@ begin
       if (a * x + b * y) < s then
         s := a * x + b * y;
     end;
+    y := y + 1;
+    if y * b < s then
+      s := y * b;
   end
   else
     s := 0;

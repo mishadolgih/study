@@ -44,7 +44,7 @@ var
 
 begin
   randomize();
-  for t := 0 to 4 do
+  for t := 0 to 10 do
   begin
     init_data();
     print_data();
