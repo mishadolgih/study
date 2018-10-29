@@ -1,0 +1,5 @@
+1. Когда (n>=m): Ответ 0.
+2. Когда (m>n) & (4a<b): Ответ a(m-n).
+3. Когда (m>n) & (b<a): Ответ b((m-n)div4) если m-n mod4=0 иначе b((m-n)div4)+b.
+4. Когда (m>n) & ((b>a) & (4a>b)) & (b((m-n)div4)+(a(m-n)-b((m-n)div4)) < b((m-n)div4)+b): Ответ b((m-n)div4) если m-n mod 4 = 0 иначе b((m-n)div4)+(a(m-n)-b((m-n)div4)).
+5. Когда (m>n) & ((b>a) & (4a>b)) & (b((m-n)div4)+(a(m-n)-b((m-n)div4)) > b((m-n)div4)+b): Ответ b((m-n)div4)+b.
