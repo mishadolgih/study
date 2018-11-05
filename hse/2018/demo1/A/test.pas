@@ -1,62 +1,57 @@
 program test;
 
+uses
+  Math;
+
 const
   VLim = 30;
 
 var
-  a, b, n, m, d, r, t, x, y, s, s1, i: integer;
-  Data: array[1..4] of integer;
+  a, b, n, m, t: int64;
 
-  function simple(): integer;
+  function simple(): int64;
+  var
+    s, x, y: int64;
   begin
     if (n < m) then
-  begin
-    x := m - n;
-    y := 0;
-    s1 := a * x + b * y;
-    while x > 3 do
     begin
-      x := x - 4;
+      x := m - n;
+      y := 0;
+      s := a * x + b * y;
+      while x > 3 do
+      begin
+        x := x - 4;
+        y := y + 1;
+        if (a * x + b * y) < s then
+          s := a * x + b * y;
+      end;
       y := y + 1;
-      if (a * x + b * y) < s1 then
-        s1 := a * x + b * y;
-    end;
-    y := y + 1;
-    if y * b < s1 then
-      s1 := y * b;
-  end
-  else
-    s1 := 0;
-    exit(s1);
+      if y * b < s then
+        s := y * b;
+    end
+    else
+      s := 0;
+    exit(s);
   end;
 
-  function optimal(): integer;
+  function optimal(): int64;
+  var
+    s, q, z, x, y: int64;
   begin
-    r := m - n;
-    d := r div 4;
-    if n < m then      //   когда разеток больше
+    z := (m - n) mod 4;
+    q := (m - n) div 4;
+    if n < m then
       if 4 * a < b then
-        // когда 4 двойника дешевле 1 мультиплексера
-        s := a * r
+        s := a * (m - n)
       else
       if b < a then
-        // когда 1 мультиплексер дешевле 1 двойника
-        if r mod 4 = 0 then
-          // нужен ли дополнительный  мультиплексер
-          s := b * d
-        else
-          s := b * d + b
+        s := ifthen((m - n) mod 4 = 0, b * q, b * q + b)
       else
-      if r mod 4 = 0 then
-        if (b * d + (a * (r mod 4)) > b * d) then
-          s := b * d
-        else
-          s := b * d + a * (r mod 4)
-      else
-      if (b * d + (a * (r mod 4)) > b * d + b) then
-        s := b * (r div 4) + b
-      else
-        s := b * d + (a * (r mod 4))
+      begin
+        x := ifthen(z * a > b, 0, z);
+        y := ifthen(z * a > b, q + 1, q);
+        s := x * a + y * b;
+      end
     else
       s := 0;
     exit(s);
@@ -64,18 +59,15 @@ var
 
 begin
   randomize();
-  for t := 1 to 10000 do
+  for t := 1 to 500 do
   begin
-    for i := 1 to 4 do
-      Data[i] := VLim - random(VLim div 2);
-    n := Data[1];
-    m := Data[2];
-    a := Data[3];
-    b := Data[4];
+    n := VLim - random(VLim div 2);
+    m := VLim - random(VLim div 2);
+    a := VLim - random(VLim div 2);
+    b := VLim - random(VLim div 2);
     if simple() <> optimal() then
-      optimal();
+      writeln('error!');
 
   end;
   writeln('done');
 end.
-
