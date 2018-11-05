@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CONFIG>
+  <ProjectSession>
+    <PathDelim Value="\"/>
+    <Version Value="10"/>
+    <BuildModes Active="Default"/>
+    <Units Count="1">
+      <Unit0>
+        <Filename Value="test.pas"/>
+        <IsPartOfProject Value="True"/>
+        <IsVisibleTab Value="True"/>
+        <TopLine Value="19"/>
+        <CursorPos X="4" Y="29"/>
+        <UsageCount Value="20"/>
+        <Loaded Value="True"/>
+      </Unit0>
+    </Units>
+    <JumpHistory Count="5" HistoryIndex="4">
+      <Position1>
+        <Filename Value="test.pas"/>
+        <Caret Line="59" Column="33" TopLine="30"/>
+      </Position1>
+      <Position2>
+        <Filename Value="test.pas"/>
+        <Caret Line="54" Column="56" TopLine="30"/>
+      </Position2>
+      <Position3>
+        <Filename Value="test.pas"/>
+        <Caret Line="39" Column="15" TopLine="21"/>
+      </Position3>
+      <Position4>
+        <Filename Value="test.pas"/>
+        <Caret Line="49" Column="25" TopLine="24"/>
+      </Position4>
+      <Position5>
+        <Filename Value="test.pas"/>
+        <Caret Line="70" Column="10" TopLine="41"/>
+      </Position5>
+    </JumpHistory>
+  </ProjectSession>
+  <Debugging>
+    <BreakPoints Count="1">
+      <Item1>
+        <Kind Value="bpkSource"/>
+        <WatchScope Value="wpsLocal"/>
+        <WatchKind Value="wpkWrite"/>
+        <Source Value="test.pas"/>
+        <Line Value="71"/>
+      </Item1>
+    </BreakPoints>
+    <Watches Count="8">
+      <Item1>
+        <Expression Value="i"/>
+      </Item1>
+      <Item2>
+        <Expression Value="N"/>
+      </Item2>
+      <Item3>
+        <Expression Value="A"/>
+      </Item3>
+      <Item4>
+        <Expression Value="max"/>
+      </Item4>
+      <Item5>
+        <Expression Value="max7"/>
+      </Item5>
+      <Item6>
+        <Expression Value=" max14"/>
+      </Item6>
+      <Item7>
+        <Expression Value="max_even"/>
+      </Item7>
+      <Item8>
+        <Expression Value="R"/>
+      </Item8>
+    </Watches>
+  </Debugging>
+</CONFIG>
