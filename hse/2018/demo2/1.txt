@@ -1,0 +1,22 @@
+function 1(): integer;
+begin
+  i := 1;
+  K:= 1;
+  While i <= n do begin
+    Readln(a) ;
+    If a(h) <= b(h) then
+      K+=1
+    Else If a(m) <= b(m) then 
+      K+=1
+    Else If a(s) <= b(s) then 
+      K+=1;
+    B:=a;
+    I +=1;
+  End;
+End;
+
+Begin
+Readln(n) ;
+Readln(b) ;
+Writeln(1() ) ;
+End.
