@@ -1,9 +1,11 @@
 program test;
 
+uses
+  Math;
 
 const
-  NLim = 4;
-  VLim = 30;
+  NLim = 40;
+  VLim = 300;
 
 
 var
@@ -26,35 +28,36 @@ var
 
   function optimal(): integer;
   var
-    max, max7, max14, max_even, R: integer;
+    i, max14, max7, max2, maxA, maxB, R: integer;
   begin
-    max := 0;
-    max7 := 0;
     max14 := 0;
-    max_even := 0;
+    max7 := 0;
+    max2 := 0;
+    maxA := 0;
+    maxB := 0;
     R := 0;
-    i := 0;
-    for i := 1 to N do
+    i := 1;
+    while i <= N do
     begin
       if (A[i] mod 14 = 0) and (A[i] > max14) then
         max14 := A[i];
-      if (A[i] mod 7 = 0) and (A[i] > max7) then
-      begin
+      if (A[i] mod 7 = 0) and (A[i] mod 2 <> 0) and (A[i] > max7) then
         max7 := A[i];
-        continue;
+      if (A[i] mod 2 = 0) and (A[i] mod 7 <> 0) and (A[i] > max2) then
+        max2 := A[i];
+      if (A[i] >= maxA) then
+      begin
+        maxB := maxA;
+        maxA := A[i];
       end;
-      if (A[i] > max) then
-        max := A[i];
-      if (A[i] mod 2 = 0) and (A[i] > max_even) then
-        max_even := A[i];
+      if (A[i] < maxA) and (A[i] > maxB) then
+        maxB := A[i];
+      i := i + 1;
     end;
-    if max14 > max7 then
-      R := max14 * max
+    if (max14 = maxA) then
+      R := ifthen(max14 * maxB > max7 * max2, max14 * maxB, max7 * max2)
     else
-    if max14 * max > max7 * max_even then
-      R := max14 * max
-    else
-      R := max7 * max_even;
+      R := ifthen(max14 * maxA > max7 * max2, max14 * maxA, max7 * max2);
     exit(R);
   end;
 
