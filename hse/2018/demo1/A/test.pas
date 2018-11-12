@@ -7,30 +7,24 @@ const
   VLim = 30;
 
 var
-  a, b, n, m, t: int64;
+  a, b, n, m, t, i, j, k: integer;
 
-  function simple(): int64;
+  function simple(): integer;
   var
-    s, x, y: int64;
+    s, x, y: integer;
   begin
-    if (n < m) then
+    if (n >= m) then
+      exit(0);
+
+    x := m - n;
+    y := 0;
+    s := a * x + b * y;
+    while x > 0 do
     begin
-      x := m - n;
-      y := 0;
-      s := a * x + b * y;
-      while x > 3 do
-      begin
-        x := x - 4;
-        y := y + 1;
-        if (a * x + b * y) < s then
-          s := a * x + b * y;
-      end;
+      x := max(x - 4, 0);
       y := y + 1;
-      if y * b < s then
-        s := y * b;
-    end
-    else
-      s := 0;
+      s := min(a * x + b * y, s);
+    end;
     exit(s);
   end;
 
@@ -58,16 +52,24 @@ var
   end;
 
 begin
-  randomize();
-  for t := 1 to 500 do
+  for i := 1 to VLim do
   begin
-    n := VLim - random(VLim div 2);
-    m := VLim - random(VLim div 2);
-    a := VLim - random(VLim div 2);
-    b := VLim - random(VLim div 2);
-    if simple() <> optimal() then
-      writeln('error!');
-
+    n := i;
+    for j := 1 to VLim do
+    begin
+      m := j;
+      for k := 1 to VLim do
+      begin
+        a := k;
+        for t := 1 to VLim do
+        begin
+          b := t;
+          if simple() <> optimal() then
+            writeln('error!');
+        end;
+      end;
+    end;
   end;
+
   writeln('done');
 end.

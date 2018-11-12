@@ -14,20 +14,20 @@ var
   begin
     z := (m - n) mod 4;
     q := (m - n) div 4;
-    if n < m then
-      if 4 * a < b then
-        s := a * (m - n)
-      else
-      if b < a then
-        s := ifthen((m - n) mod 4 = 0, b * q, b * q + b)
-      else
-      begin
-        x := ifthen(z * a > b, 0, z);
-        y := ifthen(z * a > b, q + 1, q);
-        s := x * a + y * b;
-      end
+    if n >= m then
+      exit(0);
+
+    if 4 * a < b then
+      s := a * (m - n)
     else
-      s := 0;
+    if b < a then
+      s := ifthen((m - n) mod 4 = 0, b * q, b * q + b)
+    else
+    begin
+      x := ifthen(z * a > b, 0, z);
+      y := ifthen(z * a > b, q + 1, q);
+      s := x * a + y * b;
+    end;
     exit(s);
   end;
 
