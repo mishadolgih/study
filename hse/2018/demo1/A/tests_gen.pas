@@ -29,18 +29,27 @@ var
   var
     infile, afile: textFile;
     i: integer;
+    var s, fmt:string;
   begin
-    AssignFile(infile, 'tests/0' + IntToStr(t));
+
+    Fmt:='%0:2.2d' ;S:=Format (Fmt,[t]);
+    AssignFile(infile, 'tests/' + s);
     rewrite(infile);
     for i := 1 to 4 do
       writeln(infile, Data[i]);
     Close(infile);
 
-    AssignFile(afile, 'tests/0' + IntToStr(t) + '.a');
+    Fmt:='%0:2.2d' ;S:=Format (Fmt,[t]);
+    AssignFile(afile, 'tests/' + s+ '.a');
     rewrite(afile);
     writeln(afile, ans);
     Close(afile);
   end;
+
+
+
+
+
 
 begin
   randomize();
@@ -50,5 +59,6 @@ begin
     print_data();
     readln(ans);
     save_test(t);
+
   end;
 end.
