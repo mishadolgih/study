@@ -4,7 +4,7 @@ uses
   Math;
 
 const
-  NLim = 40;
+  NLim = 10;
   VLim = 300;
 
 
@@ -28,16 +28,15 @@ var
 
   function optimal(): integer;
   var
-    i, max14, max7, max2, maxA, maxB, R: integer;
+    i, max14, max7, max2, maxA, maxB: integer;
   begin
     max14 := 0;
     max7 := 0;
     max2 := 0;
     maxA := 0;
     maxB := 0;
-    R := 0;
     i := 1;
-    while i <= N do
+    for i := 1 to N do
     begin
       if (A[i] mod 14 = 0) and (A[i] > max14) then
         max14 := A[i];
@@ -52,13 +51,8 @@ var
       end;
       if (A[i] < maxA) and (A[i] > maxB) then
         maxB := A[i];
-      i := i + 1;
     end;
-    if (max14 = maxA) then
-      R := ifthen(max14 * maxB > max7 * max2, max14 * maxB, max7 * max2)
-    else
-      R := ifthen(max14 * maxA > max7 * max2, max14 * maxA, max7 * max2);
-    exit(R);
+    exit(max(max7 * max2, ifthen(max14 = maxA, max14 * maxB, max14 * maxA)));
   end;
 
 begin
@@ -70,10 +64,7 @@ begin
       A[i] := random(VLim) + 1;
 
     if simple() <> optimal() then
-    begin
-      optimal();
-    end;
+      writeln('error!');
   end;
   writeln('done');
-  readln();
 end.

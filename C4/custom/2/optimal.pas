@@ -8,16 +8,15 @@ var
 
   function optimal(): integer;
   var
-    i, max14, max7, max2, maxA, maxB, R: integer;
+    i, max14, max7, max2, maxA, maxB: integer;
   begin
     max14 := 0;
     max7 := 0;
     max2 := 0;
     maxA := 0;
     maxB := 0;
-    R := 0;
     i := 1;
-    while i <= N do
+    for i := 1 to N do
     begin
       readln(a);
       if (a mod 14 = 0) and (a > max14) then
@@ -33,14 +32,8 @@ var
       end;
       if (a < maxA) and (a > maxB) then
         maxB := a;
-      i := i + 1;
-      i := i + 1;
     end;
-    if (max14 = maxA) then
-      R := ifthen(max14 * maxB > max7 * max2, max14 * maxB, max7 * max2)
-    else
-      R := ifthen(max14 * maxA > max7 * max2, max14 * maxA, max7 * max2);
-    exit(R);
+    exit(max(max7 * max2, ifthen(max14 = maxA, max14 * maxB, max14 * maxA)));
   end;
 
 begin
