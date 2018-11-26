@@ -4,18 +4,17 @@ uses
   Math;
 
 var
-  a, N: integer;
+  a, N: longint;
 
-  function optimal(): integer;
+  function optimal(): longint;
   var
-    i, max14, max7, max2, maxA, maxB: integer;
+    i, max14, max7, max2, maxA, maxB: longint;
   begin
     max14 := 0;
     max7 := 0;
     max2 := 0;
     maxA := 0;
     maxB := 0;
-    i := 1;
     for i := 1 to N do
     begin
       readln(a);
@@ -39,5 +38,4 @@ var
 begin
   readln(N);
   writeln(optimal());
-  readln();
 end.

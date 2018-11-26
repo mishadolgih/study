@@ -1,60 +1,39 @@
 program optimal;
 
-  //uses sysutils;
+  uses sysutils;
 
 
 
 var
-  s: string;
-  N, HH, MM, SS, k, i, x: integer;
+  time: string;
+  N, i, h, m, s, d, x, y, z: integer;
   errorCode: word;
 
-  procedure del();
-  begin
-    Delete(s, 3, 1);
-    Delete(s, 5, 1);
-    val(s, x, ErrorCode);
-  end;
-
-  procedure time();
-  begin
-    HH := x div 10000;
-    MM := x div 100 mod 100;
-    SS := x mod 100;
-  end;
 
 begin
   Assign(input, 'tests/00');
   reset(input);
-  k := 1;
+  d := 1;
   readln(N);
-  readln(s);
-  del();
-  time();
+  readln(time);
+  sscanf(time, '%d:%d:%d', [@x, @y, @z]);
 
   for i := 2 to N do
   begin
-    readln(s);
-    del();
+    readln(time);
+    sscanf(time, '%d:$d:%d', [@h, @m, @s]);
 
-    if x div 10000 <= HH then begin
-      k += 1;
-    time();
-   // continue;
-    end else
-
-    if x div 100 mod 100 <= MM then begin
-      k += 1;
-    time();
-    //continue;
-        end else
-    if x mod 100 <= SS then begin
-      k += 1;
-    time();
-     end;
-    //continue;
+    if x < h then
+      d += 1
+    else if y < m then
+      d += 1
+    else if z <= s then
+      d += 1;
+    x := h;
+    y := m;
+    z := s;
   end;
 
-  writeln(k);
+  writeln(d);
 end.
 

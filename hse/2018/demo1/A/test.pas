@@ -7,7 +7,7 @@ const
   VLim = 30;
 
 var
-  a, b, n, m, t, i, j, k: integer;
+  a, b, n, m: integer;
 
   function simple(): integer;
   var
@@ -32,38 +32,25 @@ var
   var
     q, r, x, y: int64;
   begin
-    r := (m - n) mod 4;
-    q := (m - n) div 4;
     if n >= m then
       exit(0);
 
     if 4 * a < b then
       exit(a * (m - n));
 
+    r := (m - n) mod 4;
+    q := (m - n) div 4;
     x := ifthen(r * a > b, 0, r);
     y := ifthen(r * a > b, q + 1, q);
     exit(x * a + y * b);
   end;
 
 begin
-  for i := 1 to VLim do
-  begin
-    n := i;
-    for j := 1 to VLim do
-    begin
-      m := j;
-      for k := 1 to VLim do
-      begin
-        a := k;
-        for t := 1 to VLim do
-        begin
-          b := t;
+  for n := 1 to VLim do
+    for m := 1 to VLim do
+      for a := 1 to VLim do
+        for b := 1 to VLim do
           if simple() <> optimal() then
             writeln('error!');
-        end;
-      end;
-    end;
-  end;
-
   writeln('done');
 end.

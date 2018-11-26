@@ -9,12 +9,12 @@ const
 
 
 var
-  i, N, t: integer;
-  A: array[1..NLim] of integer;
+  i, N, t: longint;
+  A: array[1..NLim] of longint;
 
-  function simple(): integer;
+  function simple(): longint;
   var
-    j, max: integer;
+    j, max: longint;
   begin
     max := 0;
     begin
@@ -26,16 +26,15 @@ var
     exit(max);
   end;
 
-  function optimal(): integer;
+  function optimal(): longint;
   var
-    i, max14, max7, max2, maxA, maxB: integer;
+    i, max14, max7, max2, maxA, maxB: longint;
   begin
     max14 := 0;
     max7 := 0;
     max2 := 0;
     maxA := 0;
     maxB := 0;
-    i := 1;
     for i := 1 to N do
     begin
       if (A[i] mod 14 = 0) and (A[i] > max14) then
