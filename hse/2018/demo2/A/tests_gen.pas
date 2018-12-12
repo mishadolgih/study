@@ -13,7 +13,7 @@ type
 
 var
   ans, i, t, N: longint;
-  Data: array[0..NLim] of time;
+  Data: array[1..NLim] of time;
   infile, afile: textFile;
   fname: string;
 
@@ -43,7 +43,7 @@ begin
 
     writeln(infile, N);
     for i := 1 to N do
-      Writeln(format('%.2d:%.2d:%.2d', [Data[i].h, Data[i].m, Data[i].s]));
+      Writeln(infile, format('%.2d:%.2d:%.2d', [Data[i].h, Data[i].m, Data[i].s]));
     writeln(afile, ans);
 
     Close(infile);

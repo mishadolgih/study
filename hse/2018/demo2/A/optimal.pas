@@ -21,7 +21,7 @@ begin
   for i := 2 to N do
   begin
     readln(time);
-    sscanf(time, '%d:$d:%d', [@h, @m, @s]);
+    sscanf(time, '%d:$d:%d', [@h, @m, @s]);    //??????????
 
     if x < h then
       d += 1
