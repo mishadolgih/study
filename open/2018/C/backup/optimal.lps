@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CONFIG>
+  <ProjectSession>
+    <PathDelim Value="\"/>
+    <Version Value="10"/>
+    <BuildModes Active="Default"/>
+    <Units Count="1">
+      <Unit0>
+        <Filename Value="optimal.pas"/>
+        <IsPartOfProject Value="True"/>
+        <IsVisibleTab Value="True"/>
+        <TopLine Value="12"/>
+        <CursorPos X="17" Y="34"/>
+        <UsageCount Value="21"/>
+        <Loaded Value="True"/>
+      </Unit0>
+    </Units>
+    <JumpHistory Count="3" HistoryIndex="2">
+      <Position1>
+        <Filename Value="optimal.pas"/>
+        <Caret Line="9" Column="31"/>
+      </Position1>
+      <Position2>
+        <Filename Value="optimal.pas"/>
+        <Caret Line="22" Column="24"/>
+      </Position2>
+      <Position3>
+        <Filename Value="optimal.pas"/>
+        <Caret Line="25" Column="25" TopLine="13"/>
+      </Position3>
+    </JumpHistory>
+  </ProjectSession>
+</CONFIG>
