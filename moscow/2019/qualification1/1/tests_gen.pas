@@ -3,44 +3,48 @@ program tests_gen;
 uses
   SysUtils;
 
-
 var
-  ans, t: longint;
-  Data: array[1..4] of longint;
+  ans, t, M, X, Y, W, H: longint;
 
   procedure init_data();
-  var
-    i: longint;
   begin
-    for i := 1 to 4 do
-      data[i]:= random(30) +1;
+    M := random(10) + 1;
+    X := random(30) + 1;
+    Y := random(20) + 1;
+    W := random(10);
+    H := random(10);
   end;
 
   procedure print_data();
-  var
-    i: longint;
   begin
-    for i := 1 to 4 do
-      Write(Data[i], ' ');
+    Writeln(M);
+    Writeln(X);
+    Writeln(Y);
+    Writeln(W);
+    Writeln(H);
     writeln();
   end;
 
   procedure save_test(t: integer);
   var
     infile, afile: textFile;
-    i: integer;
-    var s, fmt:string;
+    s, fmt: string;
   begin
 
-    Fmt:='%0:2.2d' ;S:=Format (Fmt,[t]);
+    Fmt := '%0:2.2d';
+    S := Format(Fmt, [t]);
     AssignFile(infile, 'tests/' + s);
     rewrite(infile);
-    for i := 1 to 4 do
-      writeln(infile, Data[i]);
+    Writeln(infile, M);
+    Writeln(infile, X);
+    Writeln(infile, Y);
+    Writeln(infile, W);
+    Writeln(infile, H);
     Close(infile);
 
-    Fmt:='%0:2.2d' ;S:=Format (Fmt,[t]);
-    AssignFile(afile, 'tests/' + s+ '.a');
+    Fmt := '%0:2.2d';
+    S := Format(Fmt, [t]);
+    AssignFile(afile, 'tests/' + s + '.a');
     rewrite(afile);
     writeln(afile, ans);
     Close(afile);
@@ -50,14 +54,14 @@ var
 
 
 
-
 begin
   randomize();
-  for t := 0 to 10 do
+  for t := 0 to 6 do
   begin
     init_data();
     print_data();
     readln(ans);
+    writeln();
     save_test(t);
 
   end;
