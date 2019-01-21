@@ -36,15 +36,20 @@ var
     p: integer;
   begin
     if lo < hi then
+    begin
       p := partition(lo, hi);
     quicksort(lo, p - 1);
     quicksort(p + 1, hi);
+    end;
   end;
 
 begin
   for k := 1 to N do
-    readln(A[k]);
+    A[k]:=random(10);
+  for k := 1 to N do
+    write(A[k], ' ');
+  writeln();
   quicksort(1, N);
   for k := 1 to N do
-    writeln(A[k]);
+    write(A[k], ' ');
 end.
