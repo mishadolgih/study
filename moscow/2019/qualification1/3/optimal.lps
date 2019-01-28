@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CONFIG>
+  <ProjectSession>
+    <PathDelim Value="\"/>
+    <Version Value="10"/>
+    <BuildModes Active="Default"/>
+    <Units Count="2">
+      <Unit0>
+        <Filename Value="optimal.pas"/>
+        <IsPartOfProject Value="True"/>
+        <IsVisibleTab Value="True"/>
+        <TopLine Value="5"/>
+        <CursorPos X="16" Y="9"/>
+        <UsageCount Value="21"/>
+        <Loaded Value="True"/>
+      </Unit0>
+      <Unit1>
+        <Filename Value="C:\lazarus\fpc\3.0.4\source\rtl\objpas\math.pp"/>
+        <EditorIndex Value="1"/>
+        <TopLine Value="2620"/>
+        <CursorPos X="64" Y="2626"/>
+        <UsageCount Value="10"/>
+        <Loaded Value="True"/>
+      </Unit1>
+    </Units>
+    <JumpHistory Count="6" HistoryIndex="5">
+      <Position1>
+        <Filename Value="optimal.pas"/>
+        <Caret Line="15" Column="5"/>
+      </Position1>
+      <Position2>
+        <Filename Value="C:\lazarus\fpc\3.0.4\source\rtl\objpas\math.pp"/>
+      </Position2>
+      <Position3>
+        <Filename Value="C:\lazarus\fpc\3.0.4\source\rtl\objpas\math.pp"/>
+        <Caret Line="2626" Column="71" TopLine="2620"/>
+      </Position3>
+      <Position4>
+        <Filename Value="optimal.pas"/>
+        <Caret Line="9" Column="9"/>
+      </Position4>
+      <Position5>
+        <Filename Value="optimal.pas"/>
+        <Caret Line="34" Column="20" TopLine="5"/>
+      </Position5>
+      <Position6>
+        <Filename Value="optimal.pas"/>
+        <Caret Line="21" Column="20" TopLine="4"/>
+      </Position6>
+    </JumpHistory>
+  </ProjectSession>
+</CONFIG>
