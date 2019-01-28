@@ -37,5 +37,5 @@ var
 
 begin
   readln(N);
-  writeln(optimal());
+  writeln(1+optimal());
 end.
