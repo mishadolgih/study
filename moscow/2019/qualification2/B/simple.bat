@@ -1,5 +1,5 @@
 @echo off
-fpc simple.pas 
+fpc simple.lpr 
 for %%i in (tests\0*.a) do (
 simple.exe <tests\%%~ni> tests\%%~ni.out
 fc tests\%%~ni.a tests\%%~ni.out
