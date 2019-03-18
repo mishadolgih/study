@@ -4,7 +4,7 @@ uses
   SysUtils;
 
 const
-  NLim = 20;
+  NLim = 35;
   VLim = 5;
 
 var
@@ -20,6 +20,16 @@ var
       Data[i] := random(VLim)+1;
   end;
 
+procedure print_data();
+  var
+    i: longint;
+  begin
+    for i := 1 to N do
+      Write(Data[i], ' ');
+    writeln();
+  end;
+
+
   procedure save_test(t: integer);
   var
     infile, afile: text;
@@ -27,9 +37,9 @@ var
   begin
     Assign(infile, 'tests/1' + IntToStr(t));
     rewrite(infile);
-    writeln(infile, N, t);
+    writeln(infile, N);
     for i := 1 to N do
-      write(infile, Data[i], ' ');
+      writeln(infile, Data[i], ' ');
     Close(infile);
 
     Assign(afile, 'tests/1' + IntToStr(t) + '.a');
@@ -43,8 +53,11 @@ begin
   for t := 5 to 9 do
   begin
     if t mod 2 =1 then
+      begin
        init_data();
+       print_data();
        readln(ans);
        save_test(t);
+      end;
   end;
 end.
