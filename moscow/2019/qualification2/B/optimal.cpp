@@ -11,7 +11,7 @@ int main() {
         string s = a + b + c;
         bool dotfound = (s.find('.') != string::npos);
         cout << dotfound << "\n";
-
+        bool letterfound = (while ())
 
 //                letterfound=true;
 //            }

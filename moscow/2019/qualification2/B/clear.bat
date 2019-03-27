@@ -1,3 +1,3 @@
 @echo off
 rd/s/q bin obj
-del *.depend
+del *.depend *.layout
