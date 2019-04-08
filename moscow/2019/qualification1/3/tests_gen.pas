@@ -13,7 +13,7 @@ var
     i: longint;
   begin
     for i := 1 to 4 do
-      data[i]:= random(30) +1;
+      data[i]:= random(2) +1;
   end;
 
   procedure print_data();
@@ -53,7 +53,7 @@ var
 
 begin
   randomize();
-  for t := 0 to 10 do
+  for t := 0 to 5 do
   begin
     init_data();
     print_data();
