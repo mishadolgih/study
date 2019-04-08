@@ -19,6 +19,8 @@ var
   end;
 
 begin
+    Assign(input, 'tests/00');
+  reset(input);
   readln(M);
   readln(X);
   readln(Y);
