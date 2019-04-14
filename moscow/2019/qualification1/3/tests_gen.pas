@@ -5,14 +5,18 @@ uses
 
 
 var
-  ans, t: longint;
-  Data: array[1..4] of longint;
+  ans, t, z, b: byte;
+  Data: array[1..20] of byte;
 
   procedure init_data();
   var
     i: longint;
   begin
-    for i := 1 to 4 do
+    z := 1;
+    b := random(5);
+    for i := 1 to b do
+        z := z * 2;
+    for i := 1 to (z - 1) do
       data[i]:= random(2) +1;
   end;
 
@@ -20,9 +24,9 @@ var
   var
     i: longint;
   begin
-    for i := 1 to 4 do
-      Write(Data[i], ' ');
-    writeln();
+    writeln(z);
+    for i := 1 to (z - 1) do
+      Writeln(Data[i]);
   end;
 
   procedure save_test(t: integer);
@@ -35,7 +39,8 @@ var
     Fmt:='%0:2.2d' ;S:=Format (Fmt,[t]);
     AssignFile(infile, 'tests/' + s);
     rewrite(infile);
-    for i := 1 to 4 do
+    writeln(infile, z);
+    for i := 1 to (z - 1) do
       writeln(infile, Data[i]);
     Close(infile);
 
@@ -58,7 +63,8 @@ begin
     init_data();
     print_data();
     readln(ans);
+    writeln();
     save_test(t);
-
+    readln();
   end;
 end.

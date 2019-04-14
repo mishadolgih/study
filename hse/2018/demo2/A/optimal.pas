@@ -7,12 +7,12 @@ program optimal;
 var
   time: string;
   N, i, h, m, s, d, x, y, z: integer;
-  errorCode: word;
+//  errorCode: word;
 
 
 begin
-  Assign(input, 'tests/00');
-  reset(input);
+  Assign(input, 'tests/03');
+reset(input);
   d := 1;
   readln(N);
   readln(time);
@@ -35,5 +35,6 @@ begin
   end;
 
   writeln(d);
+  readln();
 end.
 

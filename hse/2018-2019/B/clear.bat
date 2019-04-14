@@ -1,3 +1,3 @@
 @echo off
-del *.exe *.o *.lps
-rd/s/q backup lib
+rd/s/q bin obj
+del *.depend *.layout *.exe *.o

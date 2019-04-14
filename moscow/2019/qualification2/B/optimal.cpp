@@ -38,7 +38,7 @@ string minfloat(string l, string r)
 }
 
 int main() {
-    freopen("tests/02", "r", stdin);
+ //   freopen("tests/02", "r", stdin);
     string a, b, c;
     while (cin >> a >> b >> c) {
  //       cout << a << " " << b << " " << c << "\n";
