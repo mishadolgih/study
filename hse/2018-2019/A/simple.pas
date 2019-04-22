@@ -1,4 +1,4 @@
-program doubleevent;
+program simple;
 
 uses math;
 

@@ -1,45 +1,34 @@
 #include <iostream>
+#include <algorithm>
 
 using namespace std;
+long long p;
+int n, k;
 
 int main()
 {
-     //  freopen("tests/00", "r", stdin);
-    long long p, m;
-    int n, k;
+    //  freopen("tests/00", "r", stdin);
     cin >> n >> p >> k;
-    int *A = new int[n];
+    int *a = new int[n];
+    for (int i = 0; i < n; i++)
+        cin >> a[i];
+
+    long long m = 0;
     for (int i = 0; i < n; i++){
-        cin >> A[i];
+        m = m + (a[i] / k);
+        a[i] = a[i] % k;
     }
 
-    m = 0;
+    sort(a, a + sizeof a / sizeof a[0], greater<int>());
+
     for (int i = 0; i < n; i++){
-        m = m + (A[i] / k);
-        A[i] = A[i] % k;
-    }
-     for (int i = 0; i < (n - 1); i++){
-        int max = i;
-        for (int j = i + 1; j < n; j++){
-            if (A[j] > A[max]) {
-                max = j;
-            }
-            int t = A[i];
-            A[i] = A[max];
-            A[max] = t;
-        }
-     }
-     for (int i = 0; i < n; i++){
-        int d = k - A[i];
-        if ((p >= d) and (p - d >= 0)) {
+        int d = k - a[i];
+        if (p >= d) {
             m = m + 1;
             p = p - d;
         }
-     }
+    }
 
-     if (p > 0)
-        m = m + p / k;
-
-    cout << m << endl;
+    cout << m + p / k << endl;
     return 0;
 }
