@@ -3,25 +3,16 @@
 
 using namespace std;
 
-int a, b;
+int N, P, Q;
 
 int main()
 {
-    int N, P, Q;
     cin >> N >> P >> Q;
     int x = max(P, Q);
     int y = min(P, Q);
 
-    if (y-(N-x) >= 1){
-        a = y-(N-x);
-    } else {
-        a = 1;
-        }
-    if (x + y -1 >= N) {
-        b = N;
-    } else {
-        b = x + y -1;
-        }
+    int a = y-(N-x) >= 1 ? y- N + x : 1;
+    int b = x + y -1 >= N ? N : x + y -1;
     cout << a << " " << b;
     return 0;
 }

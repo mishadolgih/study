@@ -19,7 +19,7 @@ int main()
         a[i] = a[i] % k;
     }
 
-    sort(a, a + sizeof a / sizeof a[0], greater<int>());
+    sort(a, a + n, greater<int>());
 
     for (int i = 0; i < n; i++){
         int d = k - a[i];
