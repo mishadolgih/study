@@ -8,14 +8,15 @@ const
   VLim = 5;
 
 var
-  ans, t, N: longint;
+  ans, t, N, K: longint;
   Data: array[1..Nlim] of longint;
 
   procedure init_data();
   var
     i: longint;
   begin
-    N := 3*t+1;
+    N := 3*t;
+    K := t;
     for i := 1 to N do
       Data[i] := random(VLim)+1;
   end;
@@ -24,6 +25,8 @@ procedure print_data();
   var
     i: longint;
   begin
+    write(N, ' ', K);
+    writeln();
     for i := 1 to N do
       Write(Data[i], ' ');
     writeln();
@@ -37,9 +40,9 @@ procedure print_data();
   begin
     Assign(infile, 'tests/1' + IntToStr(t));
     rewrite(infile);
-    writeln(infile, N);
+    writeln(infile, N, ' ', K);
     for i := 1 to N do
-      writeln(infile, Data[i], ' ');
+      write(infile, Data[i], ' ');
     Close(infile);
 
     Assign(afile, 'tests/1' + IntToStr(t) + '.a');
@@ -50,7 +53,7 @@ procedure print_data();
 
 begin
   randomize();
-  for t := 5 to 9 do
+  for t := 3 to 7 do
   begin
     if t mod 2 =1 then
       begin
