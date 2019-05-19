@@ -1,24 +1,27 @@
 #include <iostream>
 #include <algorithm>
+#include <math.h>
+
 
 using namespace std;
-int N, K;
+long long N, K;
 
 int main()
 {
-    freopen("tests/00", "r", stdin);
+//   freopen("tests/00", "r", stdin);
     cin >> N >> K;
-    int *a = new int[N];
-    for (int i = 0; i < N; i++)
+    long long *a = new long long[N];
+    for (long long i = 0; i < N; i++)
         cin >> a[i];
 
-    int t[K];
-    int m = (K - 1) / 2;
-    for (int i = 0; i < (N-K+1); i++){
-        for (int j = 0; j < K; j++)
-            t[j] = a[i+j];
-        sort(t, t + K);
-        cout << t[m] << ' ';
+    long long sum = 0;
+    for (long long i = 0; i < K; i++)
+        sum = sum + a[i];
+    cout << round((double)sum / K) << ' ';
+
+    for (long long i = 1; i < (N+1-K); i++){
+        sum = sum - a[i-1] + a[i + K - 1];
+        cout << round((double)sum / K) << ' ';
     }
 
     return 0;

@@ -4,27 +4,22 @@ using namespace std;
 
 string minfl(string l, string r)
 {
-    int i = 0, j = 0;
-    while (l[i] != '.')
-        i++;
-    while (r[j] != '.')
-        j++;
-    if ((l[0] != '-') & (r[0] != '-'))
+    int i = l.find('.');
+    int j = r.find('.');
+    if ((l[0] != '-') && (r[0] != '-'))
         return i < j ? l : (j < i ? r : min(l, r));
-    if ((l[0] == '-') & (r[0] == '-'))
+    if ((l[0] == '-') && (r[0] == '-'))
         return i > j ? l : (j > i ? r : max(l, r));
-    if ((l[0] == '-') & (r[0] != '-'))
-        return l; else
-        return r;
-
-
+    return (l[0] == '-') && (r[0] != '-') ? l : r;
 }
 
 string minint(string l, string r)
 {
-    long long a = stoll(l);
-    long long b = stoll(r);
-    return a > b ? r : l;
+    if ((l[0] != '-') && (r[0] != '-'))
+        return l.length() > r.length() ? r: (l.length() < r.length() ? l : min(l, r));
+    if ((l[0] == '-') && (r[0] == '-'))
+        return l.length() < r.length() ? r: (l.length() > r.length() ? l : max(l, r));
+    return (l[0] == '-') && (r[0] != '-') ? l : r;
 }
 
 string minstr(string l, string r)
