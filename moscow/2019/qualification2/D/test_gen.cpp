@@ -8,11 +8,12 @@ using namespace std;
 
 int main(int argc, char *argv[])
 {
-    srand( time( 0 ) );
-    int N = 1 + rand() % stoi(argv[1]);
-    cout << N <<endl;
-    cout << 1 + rand() % stoi(argv[1]) / 2 << endl;
+    srand( time( 0 ) * stoi(argv[3]));
+    int N = 1 + 2 * (rand() % stoi(argv[1]));
+    cout << N <<'\n';
+    cout <<  N / 4 * 2 + 1 << '\n';
+    int k = stoi(argv[2]);
     for ( int i = 0; i < N; i ++)
-          cout << rand() % stoi(argv[2]);
+          cout << rand() % k << ' ';
     return 0;
 }
