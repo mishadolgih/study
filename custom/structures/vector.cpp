@@ -1,14 +1,27 @@
 #include <iostream>
-#include <vector>
+#include <cstring>
 
 using namespace std;
 
 int main()
 {
-    vector<int> v = {5, 3};
-    for (int i = 0; i < 5; i++)
-        v.push_back(i);
-    for ( int n : v )
-        cout << n << "\n";
-    return 0;
+    struct Vector
+{
+    int *p;
+    size_t size;
+    size_t capacity;
+    push_back(int val)
+    {
+        if (size == capacity)
+        {
+            capacity = capacity * 2;
+            int *t = new int[capacity];
+            memmove(t, p, sizeof(*p) * size);
+            delete[] p;
+            p = t;
+        }
+        p[size++] = val;
+    }
+};
+
 }
