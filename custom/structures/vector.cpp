@@ -3,14 +3,18 @@
 
 using namespace std;
 
-int main()
-{
-    struct Vector
+    struct vector
 {
     int *p;
-    size_t size;
-    size_t capacity;
-    push_back(int val)
+    int size;
+    int capacity;
+    vector()
+    {
+        capacity = 2;
+        size = 0;
+        p = new int[capacity];
+    }
+    void push_back(int val)
     {
         if (size == capacity)
         {
@@ -23,5 +27,10 @@ int main()
         p[size++] = val;
     }
 };
-
+int main()
+{
+    vector v;
+    v.push_back(1);
+    v.push_back(3);
+    v.push_back(2);
 }
