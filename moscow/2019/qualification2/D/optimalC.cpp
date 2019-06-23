@@ -22,13 +22,29 @@ int main()
     cout << b[m] << " ";
 
     for (int i = 1; i < (N - K + 1); i++){
-        int *j = lower_bound(b, b + K, a[i - 1]);
-        memmove(b + *j, b  + *j - 1, sizeof(int) * K - *j - 1);
+        if (a[i - 1] != b[K - 1]){
+            int *j = lower_bound(b, b + K - 1, a[i - 1]);
+            memmove(b + *j, b  + *j + 1, sizeof(int) * (K - *j));
+        }
+        for (int t = 0; t < K - 1; t++)
+            cout << b[t];
+        cout << "\n";
 
-        int *k = lower_bound(b, b + K - 1, a[i + K - 1]);
-        memmove(b + *k, b + *k - 1, sizeof(int) * K - *k);
+        if (a[i + K - 1] <= b[0]){
+            memmove(b + 1, b, (sizeof(int) * (K - 1)));
+            b[0]= a[i + K - 1];
+        } else if (a[i + K - 1] >= b[K - 2]){
+            b[K - 1]= a[i + K - 1];
+        } else{
+        int *k = lower_bound(b, b + K , a[i + K - 1]);
+        memmove(b + *k, b + *k - 1, sizeof(int) * (K - *k));
         b[*k]= a[i + K - 1];
-        cout << b[m] << " " ;
+        }
+            for (int t = 0; t < K; t++)
+            cout << b[t];
+        cout << "\n";
+
+        cout << b[m] << " ";
     }
     return 0;
 }

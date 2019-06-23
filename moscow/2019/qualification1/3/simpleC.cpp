@@ -14,12 +14,12 @@ int main()
     }
 
     int deg= 0;
-    int *a = new int[N / 2];
     int p = N;
     while (p > 1){
         p /= 2;
         deg += 1;
     }
+    int *a = new int[N / 2];
 
     for (int i = 0; i < N / 2; i++){
         cin >> t;
