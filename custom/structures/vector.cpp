@@ -10,8 +10,14 @@ using namespace std;
     int capacity;
     vector()
     {
-        capacity = 2;
         size = 0;
+        capacity = 2;
+        p = new int[capacity];
+    }
+    vector(int size)
+    {
+        this->size = 0;
+        capacity = size;
         p = new int[capacity];
     }
     void push_back(int val)
@@ -26,11 +32,18 @@ using namespace std;
         }
         p[size++] = val;
     }
+    int &operator[](int i){
+        return p[i];
+    }
 };
+
 int main()
 {
     vector v;
     v.push_back(1);
     v.push_back(3);
     v.push_back(2);
+    cout << v[1];
+    v[1] = 5;
+    return 0;
 }
