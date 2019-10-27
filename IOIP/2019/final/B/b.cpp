@@ -5,7 +5,7 @@
 
 using namespace std;
 int w, n, m;
-int w0, w1, nmax, mmax;
+int nmax, mmax;
 int *a = new int[n];
 int *b = new int[m];
 
@@ -65,22 +65,6 @@ int F1 (int x){
     return l;
 }
 
-//int G(int p, int nextp){
-//    if (F(nextp) == F1(w - nextp))
-//        return F(nextp);
-//    if (F(nextp) < F1(w - nextp)){
-//        if (max(F((w0 + p) / 2), F1(w - (w0 + p) / 2)) <= max(F(p), F1(w - p)))
-//            p = nextp;
-//        nextp = (w0 + p) / 2;
-//    } else {
-//        if (max(F((p + w1) / 2), F1(w - (p + w1) / 2)) <= max(F(p), F1(w - p)))
-//            p = nextp;
-//        nextp = (p + w1) / 2;
-//    };
-//    if (abs(p - nextp) == 1)
-//        return min(max(F(nextp), F1(w - nextp)), max(F(p), F1(w - p)));
-//    G(p, nextp);
-//}
 int main()
 {
     cin >> w >> n >> m;
@@ -88,27 +72,19 @@ int main()
         cin >> a[i];
     for (int j = 0; j < m; j++)
         cin >> b[j];
-    w0 = 1;
-    w1 = w;
+    int w0 = 1;
+    int w1 = w;
 
     nmax = Fnmax(a, n);
     mmax = Fmmax(b, m);
-    int N = ceil(log(2, w));
-    int p = w / 2;
-    int nextp = w / 2;
-    for (int i = 0; i < N; i++){
-        if (F(nextp) < F1(w - nextp)){
-            if (max(F(nextp), F1(w - nextp)) <= max(F(p), F1(w - p)))
-                p = nextp;
-        w1 = nextp;
-        nextp = (w0 + p) / 2;
-        } else {
-            if (max(F(nextp), F1(w - nextp)) <= max(F(p), F1(w - p)))
-                p = nextp;
-            w0 = nextp;
-            nextp = (p + w1) / 2;
-        };
+    int p;
+    while (w1 - w0 > 1) {
+        p = (w0 + w1) / 2;
+        if (F(p) < F1(w - p))
+            w1 = p;
+        else
+            w0 = p;
     }
-    cout <<  min(max(F(nextp), F1(w - nextp)), max(F(p), F1(w - p))) << endl;
+    cout <<  min(max(F(w0), F1(w - w0)), max(F(w1), F1(w - w1))) << endl;
     return 0;
 }
