@@ -1,8 +1,5 @@
 #include <iostream>
 #include <algorithm>
-#include <utility>
-//#define time.first
-//#define time.first y
 
 using namespace std;
 long long k, t;
@@ -16,10 +13,9 @@ int main()
     freopen("tests/01", "r", stdin);
     cin >> n >> k >> t;
     data = new int[n];
-
-    int a, b;
-    char c;
     for ( int i = 0; i < n; i++){
+        int a, b;
+        char c;
         cin >> a >> c >> b;
         data[i] = a * b;
     }
