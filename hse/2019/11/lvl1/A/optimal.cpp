@@ -16,12 +16,13 @@ int main()
     string v = "";
     for (int i = 0; i < n; i++)
         for (int j = i; j < n; j++) {
-                int l = j - i + 1;
-                string d = a.substr(i, l);
-                if ((b.find(d) != npos) && (c.find(d) != npos)) {
-                    if (l >= (int)v.length())
-                        v = d;
-                }   else break;
+            int l = j - i + 1;
+            string d = a.substr(i, l);
+            if ((b.find(d) != npos) && (c.find(d) != npos)) {
+                if (l >= (int)v.length())
+                    v = d;
+            } else
+                break;
         }
     cout << v;
     return 0;
