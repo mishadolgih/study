@@ -26,7 +26,7 @@ int main()
         cin >> a[i];
 
     a[n] = 2;
-    int x = 1;
+    int x = 0;
     int y = n;
     for (int i = 0; i < n; i++)
         for (int j = i; j < n; j++)
