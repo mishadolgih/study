@@ -7,7 +7,7 @@ int n, k, *a, *b;
 ll f(int i, int j, int h){
     ll ans;
     if (i <= n)
-    else if (j == k)
+    else if (j == k)dd
         return ans;
     else
         return 1000000000000000;

@@ -1,5 +1,4 @@
 #include <iostream>
-#include <set>
 
 
 using namespace std;
@@ -7,7 +6,7 @@ int a, b, x;
 
 int main()
 {
-//    freopen("tests/00", "r", stdin);
+    freopen("tests/00", "r", stdin);
     cin >> a >> b >> x;
 
     int n = 1, m = 1;
