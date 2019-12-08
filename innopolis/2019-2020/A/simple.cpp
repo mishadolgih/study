@@ -1,12 +1,10 @@
 #include <iostream>
-
-
 using namespace std;
 int a, b, x;
 
 int main()
 {
-    freopen("tests/00", "r", stdin);
+//    freopen("tests/00", "r", stdin);
     cin >> a >> b >> x;
 
     int n = 1, m = 1;
@@ -22,5 +20,5 @@ int main()
         cout << 0;
     else
         cout << 1000 / (a * n + b * m) * (a * n + b * m);
-    return 0;
+return 0;
 }

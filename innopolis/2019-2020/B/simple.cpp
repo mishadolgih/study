@@ -2,35 +2,31 @@
 #include <string>
 
 using namespace std;
-int SLIM = 10e5;
+const int SLIM = 1e5;
 int n;
-
 
 int main()
 {
-    int a[100000] = {};
-    int *sum = new int [n];
-    int *m = new int [n];
-    freopen("tests/00", "r", stdin);
+//    freopen("tests/00", "r", stdin);
     cin >> n;
-    for (int i = 0; i < n; i++){
-        sum[i] = 0;
-        m[i] = 0;
-    }
-    int sm = 0;
+    int a[SLIM]{};
+    int q[SLIM]{};
+    int m[SLIM]{};
     for (int i = 0; i < n; i++){
         string s;
         cin >> s;
-        for (int j = 0; j < signed(s.length()); j++){
-            a[26 * j + s[j] - 'a'] += 1;
-            sum[j] = sum[j] + 1;
-            if (a[26 * j + s[j] - 'a'] > m[j])
-                m[j] = a[26 * j + s[j] - 'a'];
+        for (unsigned int j = 0; j < s.length(); j++){
+            int k = 26 * j + (s[j] - 'a');
+            a[k] += 1;
+            q[j] ++;
+            if (a[k] > m[j])
+                m[j] = a[k];
         }
     }
-    for (int i = 0; i < 4; i++)
-        sm += sum[i] - m[i];
+    int sum = 0;
+    for (int i = 0; i < SLIM; i++)
+        sum += (q[i] - m[i]);
 
-    cout << sm;
+    cout << sum;
     return 0;
 }
