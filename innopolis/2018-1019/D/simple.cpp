@@ -5,9 +5,10 @@ using namespace std;
 int n, s, v;
 int *a;
 
-ll f(int i, int l, int m){
-    if (m >= 0 && i <=n)    {
-        for (int j = 0; j <= v; j++)
+ll f(int i, int j, int h){
+    if (h >= 0 && i <= n)    {
+        for (int k = 0; k <= v; j++)
+            return
 
     }
     else

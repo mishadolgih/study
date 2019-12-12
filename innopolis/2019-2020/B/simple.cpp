@@ -7,18 +7,17 @@ int n;
 
 int main()
 {
-//    freopen("tests/00", "r", stdin);
+    freopen("tests/00", "r", stdin);
     cin >> n;
-    int a[SLIM]{};
-    int q[SLIM]{};
-    int m[SLIM]{};
+    int *a = new int [SLIM * 26] {};
+    int *q = new int [SLIM]{};
+    int *m = new int [SLIM]{};
     for (int i = 0; i < n; i++){
         string s;
         cin >> s;
         for (unsigned int j = 0; j < s.length(); j++){
             int k = 26 * j + (s[j] - 'a');
-            a[k] += 1;
-            q[j] ++;
+            a[k] ++, q[j] ++;
             if (a[k] > m[j])
                 m[j] = a[k];
         }
