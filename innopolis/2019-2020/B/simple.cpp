@@ -18,8 +18,7 @@ int main()
         for (unsigned int j = 0; j < s.length(); j++){
             int k = 26 * j + (s[j] - 'a');
             a[k] ++, q[j] ++;
-            if (a[k] > m[j])
-                m[j] = a[k];
+            m[j] = max(m[j], a[k]);
         }
     }
     int sum = 0;
