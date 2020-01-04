@@ -3,45 +3,41 @@
 #include <set>
 #define X first
 #define Y second
+#define mp make_pair
 
 using namespace std;
 int n, k, *a;
+set<int> s;
 
-int g(vector<pair<int, int>> v){
-    int s = a[(*v.begin()).Y] - a[(*v.begin()).X];
-    int r = (*v.begin()).Y;
-    for(vector<pair<int, int>>::iterator it = ++(v.begin()); it != v.end(); ++it)
-        if ((*it).Y > r){
-            if ((*it).X > r){
-                s += (a[(*it).Y] - a[(*it).X]);
-                r = (*it).Y;
-            }
-            else{
-                s += (a[(*it).Y] - a[r]);
-                r = (*it).Y;
-            }
-        }
-    v.clear();
+set<pair<int, int>> v;
+
+int g(){
+    int s = 0;
+    int r = 0;
+    for(auto it = (v.begin()); it != v.end(); ++it){
+        s += a[max((*it).Y, r)] - a[max((*it).X, r)];
+        r = max((*it).Y, r);
+    }
     return s;
 
 
 }
-int f(set<int> s, vector<pair<int, int>> v){
-    if (v.size() == unsigned(n)){
-        if (k ==g(v))
-            return 1;
-        return 0;
-    }
+int f(){
+    if (s.empty())
+        return g() == k;
+    int l = *(s.begin());
+    s.erase(s.begin());
     int m = 0;
-    for(set<int>::iterator it = ++(s.begin()); it != s.end(); ++it){
-        int l = *s.begin();
+    for(set<int>::iterator it = s.begin(); it != s.end(); ++it){
         int r = *it;
-        v.push_back(make_pair(l, r));
-        s.erase(s.begin());
         s.erase(it);
-        m = max(0, f(s, v));
+        v.insert(mp(l, r));
+        m += f();
+        v.erase(mp(l, r));
+        it = (s.insert(r)).X;
     }
-    return m;
+    s.insert(l);
+    return m > 0;
 }
 int main()
 {
@@ -51,13 +47,9 @@ int main()
     for (int i = 0; i < 2*n; i++)
             cin >> a[i];
 
-    set<int> s;
     for (int i = 0; i < 2 * n; i++)
         s.insert(i);
-    vector<pair<int, int>> v;
-    if (f(s, v))
-        cout << "YES";
-    else
-        cout << "NO";
+    cout << (f() ? "YES" : "NO");
     return 0;
 }
+
