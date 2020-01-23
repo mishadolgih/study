@@ -46,13 +46,15 @@ set<int> Alice(int x){
     for (int j = 0; j < q; j++)
         ans.insert(g[i][j]);
     int j = 0;
-    while(ans.size() != 20)
-        if(g[j].size() < unsigned(q))
+    while(ans.size() != 20){
+        if(g[j].size() != unsigned(q))
             ans.insert(j);
+        j++;
+    }
     return{ans};
 }
 int main() {
-    freopen("tests/001","r",stdin);
+//    freopen("tests/001","r",stdin);
     cin >> n >> m;
     g = new vector<int> [n];
     for (int i = 0; i < m; i++){
