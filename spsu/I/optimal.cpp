@@ -1,78 +1,74 @@
 #include <iostream>
 #include <set>
+#include <queue>
+#include <bitset>
 #include <vector>
 
 using namespace std;
+#define X first
+#define Y second
 
-const int SIZE = 1e3 + 10;
-int p[SIZE];
-bool usd[SIZE];
+const int ORIGINAL_N = 1e3;
+const int INDUCTED_N = 20;
 
 int n, m;
-int u, v;
+vector<int> *g;
 
-int f() {
-    cin >> n >> m;
-    if (n ==1000){
-        vector <set<int>> vec( n+1, set<int>{});
-        for (int i=1;i<=n;++i) {
-            p[i] = i;
+int components(){
+    int q = 0;
+    bitset<ORIGINAL_N> visited;
+    set<int> unpending;
+    for (int i = 0; i < n; i++)
+        unpending.insert(unpending.end(), i);
+    while (!unpending.empty()){
+        int s = *(unpending.begin());
+        queue<int> pending;
+        pending.push(s), visited[s] = 1;
+        while(!pending.empty()){
+            int u = pending.front();
+            pending.pop(), unpending.erase(u);
+            for(int v : g[u])
+                if (!visited[v])
+                    pending.push(v), visited[v] = 1;
         }
-
-        for (int i=0;i<m;++i) {
-            cin >> u >> v;
-            vec[u].insert(v);
-            vec[v].insert(u);
-            int par = p[u];
-            for (int j=1;j<=n;++j) {
-                if (p[j] == par)
-                    p[j] = p[v];
-            }
-        }
-        for (int i=1;i<=n;++i)
-            usd[p[i]] = true;
-        int cnt = 0;
-        for (int i=1;i<=n;++i) {
-            if (usd[i]) ++cnt;
-        }
-        int num = 1;
-        while(vec[num].size() != unsigned(cnt))
-            num++;
-
-        cout << num << " ";
-        for(auto const& val : vec[num])
-                cout<< val << " ";
-        int k = cnt + 1;
-        int j = 1;
-        while (k < 20){
-            bool mb = true;
-            for(auto const& val : vec[num])
-                if(j == val)
-                    mb = false;
-            if ((mb) && (j != num)){
-                cout << j << " ";
-                k++;
-            }
-            j++;
-        }
+        q++;
     }
-    else{
-        vector <set<int>> vec( n+1, set<int>{});
-        for (int i=0;i<m;++i) {
-            cin >> u >> v;
-            vec[u].insert(v);
-            vec[v].insert(u);
-        }
-        int ma;
-        ma = vec[1].size();
-        for (int i = 2; i < (n+1); i++)
-            ma = (unsigned(ma) > vec[i].size() ? ma : vec[i].size());
-        cout << ma;
-    }
-    return 0;
+    return q;
+}
+
+set<int> Alice(int x){
+    int q = components();
+    int i = 0;
+    while (g[i].size() != unsigned(q))
+        i++;
+    set<int> ans;
+    ans.insert(i);
+    for (int j = 0; j < q; j++)
+        ans.insert(g[i][j]);
+    int j = 0;
+    while(ans.size() != 20)
+        if(g[j].size() < unsigned(q))
+            ans.insert(j);
+    return{ans};
 }
 int main() {
-//    freopen("tests/001","r",stdin);
-    f();
+    freopen("tests/001","r",stdin);
+    cin >> n >> m;
+    g = new vector<int> [n];
+    for (int i = 0; i < m; i++){
+        int u, v;
+        cin >> u >> v;
+        g[u - 1].push_back(v - 1);
+        g[v - 1].push_back(u - 1);
+    }
+    pair<int, int> mp = {0, 0};
+    for (int i = 0; i < n; i++)
+        mp = max(mp, {g[i].size(), i});
+
+    if (n == INDUCTED_N)
+        cout << mp.X + 1;
+    else
+        for(int x : Alice(mp.Y))
+            cout << x + 1 << " ";
     return 0;
 }
