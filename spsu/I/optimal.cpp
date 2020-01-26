@@ -36,25 +36,28 @@ int components(){
     return q;
 }
 
-set<int> Alice(int x){
-    int q = components();
-    int i = 0;
-    while (g[i].size() != unsigned(q))
-        i++;
+set<int> Alice(int x, int y){
     set<int> ans;
-    ans.insert(i);
-    for (int j = 0; j < q; j++)
-        ans.insert(g[i][j]);
+    ans.insert(y);
+    int q = components();
+    for (int i = 0; i < q; i++)
+        ans.insert(g[y][i]);
     int j = 0;
     while(ans.size() != 20){
-        if(g[j].size() != unsigned(q))
-            ans.insert(j);
+        int t = 0;
+        if(g[j].size() < unsigned(q)){
+            for(int k = 0; k < x; k++)
+                if (j == g[y][k])
+                    t = 1;
+            if ( t == 0)
+                ans.insert(j);
+        }
         j++;
     }
     return{ans};
 }
 int main() {
-//    freopen("tests/001","r",stdin);
+    freopen("tests/001","r",stdin);
     cin >> n >> m;
     g = new vector<int> [n];
     for (int i = 0; i < m; i++){
@@ -70,7 +73,7 @@ int main() {
     if (n == INDUCTED_N)
         cout << mp.X + 1;
     else
-        for(int x : Alice(mp.Y))
+        for(int x : Alice(mp.X, mp.Y))
             cout << x + 1 << " ";
     return 0;
 }
